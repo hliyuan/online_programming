@@ -1,5 +1,7 @@
 package test.reflect;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
@@ -50,6 +52,11 @@ public class ReflectDemo2 {
         Class clazz = Class.forName(name);
         //获取了指定的构造函数对象。
         Constructor constructor = clazz.getConstructor(String.class, int.class);
+
+        //获取全部的公共构造函数
+        Constructor []constructors = clazz.getConstructors();
+        //获取全部的构造函数，包括私有和保护的
+        Constructor []constructors1 = clazz.getDeclaredConstructors();
         //通过该构造器对象的newInstance方法进行对象的实例化
         Object obj = constructor.newInstance("daidai",25);
 
